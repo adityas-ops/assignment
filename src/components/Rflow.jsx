@@ -3,12 +3,12 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-// import {Pagination,Typography }from '@mui/material';
 import Compo from "./Compo";
 import ReactPaginate from "react-paginate";
 import "../App.css";
 
 function Items({ currentItems }) {
+
   return (
     <>
       {currentItems &&
@@ -26,20 +26,13 @@ function Items({ currentItems }) {
 }
 
 function Rflow() {
-  const { name } = useParams();
+  const { id } = useParams();
   const [modules, setModules] = useState([]);
-
   const [itemOffset, setItemOffset] = useState(0);
-
-  // Simulate fetching items from another resources.
-  // (This could be items from props; or items loaded in a local state
-  // from an API endpoint with useEffect and useState)
   const endOffset = itemOffset + 5;
   console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const currentItems = modules.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(modules.length / 5);
-
-  // Invoke when user click to request another page.
   const handlePageClick = (event) => {
     const newOffset = (event.selected * 5) % modules.length;
     console.log(
@@ -47,22 +40,25 @@ function Rflow() {
     );
     setItemOffset(newOffset);
   };
-
+  const [namea, setName] = useState("");
   useEffect(() => {
     const fetchModules = async () => {
       try {
         const res = await axios.get(
           `https://64307b10d4518cfb0e50e555.mockapi.io/modules`
         );
-        console.log(res.data);
+        const res1 = await axios.get(
+          `https://64307b10d4518cfb0e50e555.mockapi.io/workflow/${id}`
+        )
+        console.log("res",res1.data.name);
         setModules(res.data);
+        setName(res1.data.name);
       } catch (err) {
         console.log(err);
       }
     };
     fetchModules();
   }, []);
-
   return (
     <>
       <Box width="100%" height="100vh" position="fixed">
@@ -74,7 +70,7 @@ function Rflow() {
           border="2px solid rgb(17, 46, 171)"
         >
           <Text p="10px" fontWeight="800">
-            WorkFlow Name : {name}
+            WorkFlow Name : {namea}
           </Text>
         </Box>
         <Box>
@@ -92,11 +88,11 @@ function Rflow() {
               <Box p="10px">
                 <Items currentItems={currentItems} />
                 <Box
-                  style={{
-                    // add this in the bottom
-                
+                position="relative"
+                top="50%"
+                left="50%"
+                transform="translate(-50%, -50%)"
 
-                  }}
                 >
                   <ReactPaginate
                     breakClassName="break-me"

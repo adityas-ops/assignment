@@ -45,7 +45,7 @@ function List({loading,error,data}) {
           <Tr key={item.id} textAlign="center">
             <Td>
             <NavLink
-            to={`/rflow/${item.id}/${item.name}`}
+            to={`/rflow/${item.id}`}
             style={{
           
           textDecoration: 'underline',

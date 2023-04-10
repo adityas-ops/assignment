@@ -33,7 +33,7 @@ function App() {
           element={<List loading={loading} error={error} data={data} />}
         />
         <Route
-          path="/rflow/:id/:name"
+          path="/rflow/:id"
           element={<Rflow />}
         />
 
