@@ -6,7 +6,8 @@ import axios from "axios";
 import Compo from "./Compo";
 import ReactPaginate from "react-paginate";
 import "../App.css";
-
+import Flow from "./Flow";
+import { ReactFlowProvider} from 'reactflow';
 function Items({ currentItems }) {
 
   return (
@@ -61,7 +62,9 @@ function Rflow() {
   }, []);
   return (
     <>
+      
       <Box width="100%" height="100vh" position="fixed">
+      <ReactFlowProvider>
         <Box
           w="100%"
           h="50px"
@@ -88,9 +91,10 @@ function Rflow() {
               <Box p="10px">
                 <Items currentItems={currentItems} />
                 <Box
-                position="relative"
-                top="50%"
-                left="50%"
+                position="absolute"
+                bottom="0"
+                left="200px"
+
                 transform="translate(-50%, -50%)"
 
                 >
@@ -113,10 +117,16 @@ function Rflow() {
                 </Box>
               </Box>
             </Box>
-            <Box width="70%"></Box>
+            <Box width="70%" 
+             height="fit-content"
+            >
+              <Flow />
+            </Box>
           </Flex>
         </Box>
+        </ReactFlowProvider>
       </Box>
+      
     </>
   );
 }

@@ -32,7 +32,16 @@
 }
 
 .page{
-    padding: 4px;
+    padding-left: 4px;
+    padding-right: 4px;
     border-radius: 5px;
     margin: 0 3px;
+}
+
+.reactflow-wrappe{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
