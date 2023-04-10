@@ -1,3 +1,38 @@
-navLink{
-    text-decoration: underline;
+
+.paginate{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    list-style-type: none;
+}
+.break-me{
+    word-wrap: break-word;
+    margin:1px;
+
+}
+
+.active{
+    background-color: #2a3ead;
+    color: white;
+}
+.prev{
+
+    padding: 10px;
+    border-radius: 5px;
+    margin: 0 10px;
+}
+
+.next{
+   
+    padding: 10px;
+    border-radius: 5px;
+    margin: 0 10px;
+}
+
+.page{
+    padding: 4px;
+    border-radius: 5px;
+    margin: 0 3px;
 }
