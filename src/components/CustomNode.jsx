@@ -1,8 +1,22 @@
 import { Box, Flex, Text } from '@chakra-ui/react';
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import { Handle, Position } from 'reactflow';
 
 function CustomNode({ data }) {
+    const [valid,setValid] = useState(false)
+
+    const bc = (value)=>{
+        let border;
+        if(value === 'A'){
+            border = '2px solid lightblue'
+        }
+        else{
+            border = '2px solid red'
+        }
+        return border
+
+    }
+
   return (
     <div 
      style={{
@@ -17,18 +31,43 @@ function CustomNode({ data }) {
       <Flex 
         width="350px"
         height="50px"
-        border="2px solid lightblue"
         borderRadius="10px"
+        border={bc(data.input)}
         
 
       >
-        <Text  display="flex" justifyContent="center" alignItems="center"  fontWeight="800" borderRight="2px solid lightblue" width="15%">{data.input}</Text>
+        <Text  display="flex" justifyContent="center" alignItems="center"  fontWeight="800" borderRight={bc(data.input)} width="15%">{data.input}</Text>
           <Text display="flex" justifyContent="center" alignItems="center"   fontWeight="500" width="70%">{data.name}</Text>
-          <Text display="flex" justifyContent="center" alignItems="center"  fontWeight="800" borderLeft="2px solid lightblue" width="15%">{data.output}</Text>
+          <Text display="flex" justifyContent="center" alignItems="center"  fontWeight="800" borderLeft={bc(data.input)} width="15%">{data.output}</Text>
       </Flex>
 
-      <Handle type="target" position={Position.Top} />
-      <Handle type="source" position={Position.Bottom} />
+     {
+        data.input === 'A' ? (
+            <Handle
+            type="target"
+            position={Position.Bottom}
+            style={{ background: '#555' }}
+            onConnect={(params) => console.log('handle onConnect', params)}
+            />
+        ) : (
+            <>
+            <Handle
+            type="source"
+            position={Position.Top}
+            style={{ background: '#555' }}
+            onConnect={(params) => console.log('handle onConnect', params)}
+            />
+            <Handle
+            type="target"
+            position={Position.Bottom}
+            style={{ background: '#555' }}
+            onConnect={(params) => console.log('handle onConnect', params)}
+            />
+            </>
+            
+
+        )
+     }
     </Box>
     </div>
   );

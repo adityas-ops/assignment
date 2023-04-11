@@ -94,9 +94,10 @@ const Flow = () => {
             onDrop={onDrop}
             onDragOver={onDragOver}
             nodeTypes={nodeTypes}
+
             defaultZoom={1}
             defaultPosition={[0, 0]}
-          >
+            >
             <Background variant="dots" gap={12} size={1} />
             <MiniMap />
             <Controls />
