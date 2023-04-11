@@ -25,7 +25,7 @@ function Compo({name,input,output}) {
         <Flex 
             width="350px"
             height="50px"
-            border="2px solid black"
+            border="2px solid lightblue"
             margin="10px"
             alignItems="center"
             // justifyContent="space-between"
@@ -33,13 +33,13 @@ function Compo({name,input,output}) {
             
         >
     
-            <Text p="10px" fontWeight="800" borderRight="2px solid black" width="15%">
+            <Text p="10px" fontWeight="800" borderRight="2px solid lightblue" width="15%">
                 {input}
             </Text>
             <Text p="10px" fontWeight="500" width="70%">
                 {name}
             </Text>
-            <Text p="10px" fontWeight="800" borderLeft="2px solid black" width="15%">
+            <Text p="10px" fontWeight="800" borderLeft="2px solid lightblue" width="15%">
                 {output}
             </Text>
         </Flex>

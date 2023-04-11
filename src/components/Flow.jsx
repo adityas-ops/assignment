@@ -1,6 +1,5 @@
 import React, { useState, useRef, useCallback } from 'react';
 import ReactFlow, {
-  ReactFlowProvider,
   addEdge,
   useNodesState,
   useEdgesState,
@@ -10,19 +9,30 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import '../index.css';
+import '../App.css'
+import CustomNode from './CustomNode';
 
 const initialNodes = [
   {
     id: '1',
-    type: 'input',
-    data: { label: 'input node' },
+    type: 'custom',
     position: { x: 250, y: 5 },
+    data: { 
+      input:"A",
+      name:"Input",
+      output:"B",
+     },
+      style:{
+        Background:'transparent'
+      }
   },
 ];
 
 let id = 0;
 const getId = () => `dndnode_${id++}`;
-
+const nodeTypes = {
+  custom: CustomNode,
+};
 const Flow = () => {
   const reactFlowWrapper = useRef(null);
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
@@ -54,19 +64,19 @@ const Flow = () => {
       });
       const newNode = {
         id: getId(),
-        type,
+        type: 'custom',
         position,
-        // extract multiple data from object
-        data: { label: `${type} node`
+        data: {
+        input:`${JSON.parse(type).input}`,
+        name:`${JSON.parse(type).name}`,
+        output:`${JSON.parse(type).output}`
        },
-      
       };
 
       setNodes((nds) => nds.concat(newNode));
     },
     [reactFlowInstance]
   );
-
   return (
     <div className="dndflow">
       
@@ -83,7 +93,9 @@ const Flow = () => {
             onInit={setReactFlowInstance}
             onDrop={onDrop}
             onDragOver={onDragOver}
-            fitView
+            nodeTypes={nodeTypes}
+            defaultZoom={1}
+            defaultPosition={[0, 0]}
           >
             <Background variant="dots" gap={12} size={1} />
             <MiniMap />
