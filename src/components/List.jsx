@@ -20,6 +20,7 @@ function List({loading,error,data}) {
         display="flex"
         justifyContent="center"
         alignItems="center"
+        marginBottom="100px"
 
       >
      <TableContainer mt="100px" w="800px" textAlign="center">
