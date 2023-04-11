@@ -35,7 +35,7 @@ function CustomNode({ data }) {
 
       >
         <Text  display="flex" justifyContent="center" alignItems="center"  fontWeight="800" borderRight={bc(data.input)} width="15%">{data.input}</Text>
-          <Text display="flex" justifyContent="center" alignItems="center"   fontWeight="500" width="70%">{data.name}</Text>
+          <Text display="flex" justifyContent="center" alignItems="center"  bg="#c9eaff" fontWeight="500" width="70%">{data.name}</Text>
           <Text display="flex" justifyContent="center" alignItems="center"  fontWeight="800" borderLeft={bc(data.input)} width="15%">{data.output}</Text>
       </Flex>
 

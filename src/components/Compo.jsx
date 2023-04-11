@@ -36,7 +36,9 @@ function Compo({name,input,output}) {
             <Text p="10px" fontWeight="800" borderRight="2px solid lightblue" width="15%">
                 {input}
             </Text>
-            <Text p="10px" fontWeight="500" width="70%">
+            <Text p="10px" fontWeight="500" bg="#c9eaff" width="70%" 
+               
+            >
                 {name}
             </Text>
             <Text p="10px" fontWeight="800" borderLeft="2px solid lightblue" width="15%">
