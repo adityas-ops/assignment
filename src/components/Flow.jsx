@@ -18,7 +18,7 @@ const initialNodes = [
     type: 'custom',
     position: { x: 250, y: 5 },
     data: { 
-      input:"A",
+      input:"->",
       name:"Input",
       output:"B",
      },

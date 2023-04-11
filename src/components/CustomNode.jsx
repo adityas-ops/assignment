@@ -1,13 +1,11 @@
 import { Box, Flex, Text } from '@chakra-ui/react';
-import React, { memo, useState } from 'react';
+import React, { memo } from 'react';
 import { Handle, Position } from 'reactflow';
 
 function CustomNode({ data }) {
-    const [valid,setValid] = useState(false)
-
     const bc = (value)=>{
         let border;
-        if(value === 'A'){
+        if(value === '->'){
             border = '2px solid lightblue'
         }
         else{
@@ -42,7 +40,7 @@ function CustomNode({ data }) {
       </Flex>
 
      {
-        data.input === 'A' ? (
+        data.input === '->' ? (
             <Handle
             type="target"
             position={Position.Bottom}
